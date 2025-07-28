@@ -1,0 +1,10 @@
+langchain
+docker
+typer
+openai
+ollama
+# pydantic
+# pydantic-settings
+# python-dotenv
+# requests
+# httpx
