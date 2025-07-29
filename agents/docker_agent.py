@@ -3,6 +3,9 @@ from langchain_community.llms import OpenAI  # or Ollama, DeepSeek, etc.
 from tools.dockerfile_gen import generate_dockerfile
 from tools.docker_build import build_image
 from tools.docker_scan import run_trivy_scan
+import os
+
+api_key = os.getenv("OPENAI_API_KEY")
 
 def get_agent():
     llm = OpenAI(temperature=0)  # Replace with Ollama if local model

@@ -3,8 +3,8 @@ docker
 typer
 openai
 ollama
-# pydantic
-# pydantic-settings
-# python-dotenv
-# requests
-# httpx
+pydantic
+pydantic-settings
+python-dotenv
+requests
+httpx
