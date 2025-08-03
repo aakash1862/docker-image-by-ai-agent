@@ -1,3 +1,5 @@
+# This file is for CLI-based interaction using Typer
+
 from agents.docker_agent import get_agent
 import typer
 from tools.docker_build import build_image

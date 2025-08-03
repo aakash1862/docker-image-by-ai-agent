@@ -48,6 +48,11 @@
 #         return f"# Error generating Dockerfile: {str(e)}"
 
 from langchain_community.llms import OpenAI  # or Ollama, DeepSeek, etc.
+from langchain_anthropic import ChatAnthropic
+from langchain_anthropic import Anthropic
+from langchain_together import Together
+from dotenv import load_dotenv
+load_dotenv()
 import os
 
 def generate_dockerfile(app_description: str) -> str:
@@ -62,7 +67,22 @@ def generate_dockerfile(app_description: str) -> str:
     """
     try:
         # Initialize OpenAI LLM
-        llm = OpenAI(model="gpt-3.5-turbo", temperature=0, max_tokens=1024, openai_api_key=os.getenv("OPENAI_API_KEY"))  # Adjust model and temperature as needed
+        # llm = OpenAI(model="gpt-3.5-turbo", temperature=0, max_tokens=250, openai_api_key=os.getenv("OPENAI_API_KEY"))  # Adjust model and temperature as needed
+
+        # Initialize Anthropic LLM if needed
+        # llm = ChatAnthropic(
+        #     model="claude-3-haiku-20240307",  # or another Claude model
+        #     temperature=0,
+        #     anthropic_api_key=os.getenv("ANTHROPIC_API_KEY")
+        # )
+        
+        # Initialize Together LLM if needed
+        llm = Together(
+                model="meta-llama/Llama-3-70b-chat-hf",  # Or any supported Together model
+                temperature=0,
+                max_tokens=250,
+                together_api_key=os.getenv("TOGETHER_API_KEY")
+            )
 
         # Prepare the prompt for Dockerfile generation
         prompt = (
